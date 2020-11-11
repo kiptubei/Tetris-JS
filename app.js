@@ -50,7 +50,6 @@ document.addEventListener("DOMContentLoaded", () => {
     iTetromino,
   ];
 
-
   let currentPosition = 4;
   let currentRotation = 0;
 
@@ -64,10 +63,32 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  function undraw(){
+  function undraw() {
     current.forEach((item) => {
       squares[currentPosition + item].classList.remove("tetromino");
     });
   }
 
+  // Move tetromino down
+  let timerId = setInterval(moveDown, 1000);
+
+  function moveDown() {
+    undraw();
+    currentPosition += width;
+    draw();
+    freeze();
+  }
+
+  // freeze function to stop tetromino when it gets to the bottom
+  function freeze() {
+    if (current.some((index) => squares[currentPosition + index + width].classList.contains("taken")))
+    {
+      current.forEach(item => squares[currentPosition + item].classList.add("taken"));
+        // start a new tetromino falling
+        random = Math.floor(Math.random() * theTetrominoes.length);
+        current = theTetrominoes[random][currentRotation];
+        currentPosition = 4;
+        draw();
+    }
+  }
 });
