@@ -1,6 +1,6 @@
-# Library (JavaScript)
+# Tetris-JS (JavaScript)
 
-This project is a basic version of the popular Tetris game built entirely in Javascript ,HTML5 and CSS. No frameworks or libraries.
+This project is a basic version of the popular Tetris game built entirely in Javascript.
 
 
 ## Live Demo
